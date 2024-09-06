@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
-import pdfMake from 'pdfmake/build/pdfmake';
 import  pdfFonts from 'pdfmake/build/vfs_fonts.js';
+import pdfMake from 'pdfmake/build/pdfmake';
+
 import htmlToPdfmake from 'html-to-pdfmake';
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
