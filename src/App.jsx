@@ -12,10 +12,16 @@ const MyPage = () => {
     // Get the HTML content as a string
     const htmlContent = pageRef.current.innerHTML;
 
-    // Convert HTML content to a format compatible with PDFMake
-    const pdfMakeContent = htmlToPdfmake(htmlContent);
+    // Convert HTML to PDFMake format
+    const pdfMakeContent = htmlToPdfmake(htmlContent, {
+      defaultStyles: {
+        h1: { fontSize: 22, bold: true },
+        h2: { fontSize: 18, bold: true },
+        p: { fontSize: 12 },
+      },
+    });
 
-    // Define the document structure and styles
+    // Define the document content and styles
     const documentDefinition = {
       content: pdfMakeContent,
       defaultStyle: {
@@ -23,7 +29,7 @@ const MyPage = () => {
       },
     };
 
-    // Create and download the PDF
+    // Generate the PDF
     pdfMake.createPdf(documentDefinition).download('webpage-content.pdf');
   };
 
@@ -31,16 +37,18 @@ const MyPage = () => {
     <div>
       <div ref={pageRef}>
         {/* Your entire webpage content */}
-        <h1>Welcome to My Page</h1>
-        <p>This content will be exported to a PDF file in HTML and CSS format.</p>
-        <div style={{  padding: '15px', borderRadius: '10px' }}>
-          <h2>Styled Section</h2>
-          <p>This section has custom styling applied.</p>
+        <h1 style={{ textAlign: 'center', color: '#333' }}>Welcome to My Page</h1>
+        <p style={{ textAlign: 'justify', margin: '0 20px' }}>
+          This content will be exported to a PDF file with the same CSS alignment and styling.
+        </p>
+        <div style={{ padding: '15px', borderRadius: '10px' }}>
+          <h2 style={{ textAlign: 'center' }}>Styled Section</h2>
+          <p style={{ textAlign: 'left' }}>This section has custom styling applied.</p>
         </div>
         <ul>
-          <li>Item 1</li>
-          <li>Item 2</li>
-          <li>Item 3</li>
+          <li style={{ textAlign: 'left' }}>Item 1</li>
+          <li style={{ textAlign: 'center' }}>Item 2</li>
+          <li style={{ textAlign: 'left' }}>Item 3</li>
         </ul>
       </div>
       <button onClick={handleGeneratePdf}>Download Page as PDF</button>
