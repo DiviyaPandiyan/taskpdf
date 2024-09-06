@@ -38,13 +38,7 @@ const MyPage = () => {
       <div ref={pageRef}>
         {/* Your entire webpage content */}
         <h1 style={{ textAlign: 'center', color: '#333' }}>Welcome to My Page</h1>
-        <p style={{ textAlign: 'justify', margin: '0 20px' }}>
-          This content will be exported to a PDF file with the same CSS alignment and styling.
-        </p>
-        <div style={{ padding: '15px', borderRadius: '10px' }}>
-          <h2 style={{ textAlign: 'center' }}>Styled Section</h2>
-          <p style={{ textAlign: 'left' }}>This section has custom styling applied.</p>
-        </div>
+      
         <ul>
           <li style={{ textAlign: 'left' }}>Item 1</li>
           <li style={{ textAlign: 'center' }}>Item 2</li>
